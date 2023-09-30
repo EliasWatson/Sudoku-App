@@ -1,0 +1,9 @@
+.cell-bg {
+  margin: 0;
+  border: 0.5px solid black;
+  background-color: white;
+}
+
+.cell-bg--highlighted {
+  background-color: lightblue;
+}

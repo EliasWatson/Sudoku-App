@@ -1,35 +1,17 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { ReactNode, useState } from "react";
 import "./App.css";
+import { Board, createBoard } from "./board";
+import { Options, OptionsContext } from "./options";
 
-function App() {
-  const [count, setCount] = useState(0);
+export const App = (): ReactNode => {
+  const [options, setOptions] = useState<Options>({ theme: { cellSize: 64 } });
+  const [board, setBoard] = useState(() => createBoard());
 
   return (
-    <>
+    <OptionsContext.Provider value={options}>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <Board board={board} />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </OptionsContext.Provider>
   );
-}
-
-export default App;
+};
