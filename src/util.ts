@@ -1,3 +1,5 @@
+export type Coord = [number, number];
+
 export function range(end: number, start: number = 0): number[] {
   return new Array(end - start).fill(0).map((_, i) => i + start);
 }

@@ -1,8 +1,8 @@
-import { BoardData, getColumn, getRow, getSquare } from "./board";
-import { range } from "./util";
+import { BoardData, getColumn, getRow, getSquare } from "../board";
+import { range } from "../util";
 
 export function addAutoNotes(board: BoardData): BoardData {
-  const b = structuredClone(board);
+  const b: BoardData = { cells: [...board.cells] };
 
   for (let y = 0; y < 9; y++) {
     for (let x = 0; x < 9; x++) {
@@ -14,7 +14,7 @@ export function addAutoNotes(board: BoardData): BoardData {
       const visibleCells = [
         ...getRow(b, y),
         ...getColumn(b, x),
-        ...getSquare(b, Math.floor(x / 3), Math.floor(y / 3)),
+        ...getSquare(b, x, y),
       ];
       for (const other of visibleCells) {
         if (other.value !== undefined) {
@@ -22,7 +22,7 @@ export function addAutoNotes(board: BoardData): BoardData {
         }
       }
 
-      cell.notes = [...notes];
+      b.cells[y][x] = { ...cell, notes: [...notes] };
     }
   }
 

@@ -4,11 +4,13 @@ import "./CellBackground.css";
 import { ReactNode, useContext } from "react";
 
 export type CellBackgroundProps = {
+  selected: boolean;
   highlighted: boolean;
   children: ReactNode;
 };
 
 export const CellBackground = ({
+  selected,
   highlighted,
   children,
 }: CellBackgroundProps): ReactNode => {
@@ -18,7 +20,11 @@ export const CellBackground = ({
 
   return (
     <div
-      className={classes(["cell-bg", [highlighted, "cell-bg--highlighted"]])}
+      className={classes([
+        "cell-bg",
+        [highlighted, "cell-bg--highlighted"],
+        [selected, "cell-bg--selected"],
+      ])}
       style={{ width: `${cellSize}px`, height: `${cellSize}px` }}
     >
       {children}

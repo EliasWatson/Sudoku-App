@@ -1,8 +1,16 @@
 import "./App.css";
-import { ReactNode, useState } from "react";
-import { Board, loadBoard } from "./board";
+import { ReactNode, useCallback, useState } from "react";
+import {
+  Board,
+  BoardData,
+  getColumn,
+  getRow,
+  getSquare,
+  loadBoard,
+} from "./board";
 import { Options, OptionsContext } from "./options";
 import { addAutoNotes } from "./game";
+import { GameDataContext } from "./game/context";
 
 const TEST_BOARD_STRING: string =
   "  916435 " +
@@ -23,11 +31,36 @@ export const App = (): ReactNode => {
     addAutoNotes(loadBoard(TEST_BOARD_STRING)),
   );
 
+  const onCellClicked = useCallback(
+    (x: number, y: number): void =>
+      setBoard((currentBoard): BoardData => {
+        const b = { ...currentBoard };
+
+        for (let y = 0; y < 9; y++) {
+          for (let x = 0; x < 9; x++) {
+            b.cells[y][x].highlighted = false;
+            b.cells[y][x].selected = false;
+          }
+        }
+
+        b.cells[y][x].selected = true;
+
+        getRow(b, y).forEach((cell) => (cell.highlighted = true));
+        getColumn(b, x).forEach((cell) => (cell.highlighted = true));
+        getSquare(b, x, y).forEach((cell) => (cell.highlighted = true));
+
+        return b;
+      }),
+    [],
+  );
+
   return (
     <OptionsContext.Provider value={options}>
-      <div>
-        <Board board={board} />
-      </div>
+      <GameDataContext.Provider value={{ onCellClicked }}>
+        <div>
+          <Board board={board} />
+        </div>
+      </GameDataContext.Provider>
     </OptionsContext.Provider>
   );
 };

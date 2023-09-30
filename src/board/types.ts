@@ -50,13 +50,12 @@ export function getColumn(board: BoardData, x: number): CellData[] {
   return board.cells.map((row) => row[x]);
 }
 
-export function getSquare(
-  board: BoardData,
-  sx: number,
-  sy: number,
-): CellData[] {
-  return range((sy + 1) * 3, sy * 3).flatMap((y) =>
-    range((sx + 1) * 3, sx * 3).map((x) => board.cells[y][x]),
+export function getSquare(board: BoardData, x: number, y: number): CellData[] {
+  const sx = Math.floor(x / 3);
+  const sy = Math.floor(y / 3);
+
+  return range((sy + 1) * 3, sy * 3).flatMap((y2) =>
+    range((sx + 1) * 3, sx * 3).map((x2) => board.cells[y2][x2]),
   );
 }
 

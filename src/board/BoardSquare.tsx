@@ -21,19 +21,51 @@ export const BoardSquare = ({
   return (
     <Grid className="board--square">
       <GridRow>
-        <Cell cell={cells[yOffset][xOffset]} highlighted={false} />
-        <Cell cell={cells[yOffset][xOffset + 1]} highlighted={false} />
-        <Cell cell={cells[yOffset][xOffset + 2]} highlighted={false} />
+        <Cell x={xOffset + 0} y={yOffset + 0} cell={cells[yOffset][xOffset]} />
+        <Cell
+          x={xOffset + 1}
+          y={yOffset + 0}
+          cell={cells[yOffset][xOffset + 1]}
+        />
+        <Cell
+          x={xOffset + 2}
+          y={yOffset + 0}
+          cell={cells[yOffset][xOffset + 2]}
+        />
       </GridRow>
       <GridRow>
-        <Cell cell={cells[yOffset + 1][xOffset]} highlighted={false} />
-        <Cell cell={cells[yOffset + 1][xOffset + 1]} highlighted={false} />
-        <Cell cell={cells[yOffset + 1][xOffset + 2]} highlighted={false} />
+        <Cell
+          x={xOffset + 0}
+          y={yOffset + 1}
+          cell={cells[yOffset + 1][xOffset]}
+        />
+        <Cell
+          x={xOffset + 1}
+          y={yOffset + 1}
+          cell={cells[yOffset + 1][xOffset + 1]}
+        />
+        <Cell
+          x={xOffset + 2}
+          y={yOffset + 1}
+          cell={cells[yOffset + 1][xOffset + 2]}
+        />
       </GridRow>
       <GridRow>
-        <Cell cell={cells[yOffset + 2][xOffset]} highlighted={false} />
-        <Cell cell={cells[yOffset + 2][xOffset + 1]} highlighted={false} />
-        <Cell cell={cells[yOffset + 2][xOffset + 2]} highlighted={false} />
+        <Cell
+          x={xOffset + 0}
+          y={yOffset + 2}
+          cell={cells[yOffset + 2][xOffset]}
+        />
+        <Cell
+          x={xOffset + 1}
+          y={yOffset + 2}
+          cell={cells[yOffset + 2][xOffset + 1]}
+        />
+        <Cell
+          x={xOffset + 2}
+          y={yOffset + 2}
+          cell={cells[yOffset + 2][xOffset + 2]}
+        />
       </GridRow>
     </Grid>
   );

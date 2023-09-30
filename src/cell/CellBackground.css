@@ -5,5 +5,9 @@
 }
 
 .cell-bg--highlighted {
+  background-color: lightgray;
+}
+
+.cell-bg--selected {
   background-color: lightblue;
 }
