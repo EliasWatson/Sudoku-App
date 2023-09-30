@@ -4,4 +4,6 @@ export type Options = {
 
 export type Theme = {
   cellSize: number;
+  valueFontSize: number;
+  noteFontSize: number;
 };

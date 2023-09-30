@@ -1,3 +1,4 @@
+import "./Board.css";
 import { ReactNode } from "react";
 import { BoardData } from "../board";
 import { Grid, GridRow } from "../grid";
@@ -9,7 +10,7 @@ export type BoardProps = {
 
 export const Board = ({ board }: BoardProps): ReactNode => {
   return (
-    <Grid>
+    <Grid className="board">
       <GridRow>
         <BoardSquare board={board} x={0} y={0} />
         <BoardSquare board={board} x={1} y={0} />

@@ -1,4 +1,9 @@
 .cell--notes__note {
-  font-size: small;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   font-weight: normal;
+
+  user-select: none;
 }
